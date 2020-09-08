@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div ng-app="">
+<div ng-app="app" ng-controller="mainController">
 
     <p>a: <input type="number" ng-model="a" /></p>
     <p>b: <input type="number" ng-model="b" /></p>
@@ -14,7 +14,33 @@
     <p>a - b: {{ a + ' - ' + b + ' = ' + (a-b) }}</p>
     <p>a * b: {{ a + ' * ' + b + ' = ' + (a*b) }}</p>
     <p>a / b: {{ a + ' / ' + b + ' = ' + (a/b) }}</p>
+    <hr />
+    
+    <p>{{ sum() }}</p>
+    <p>{{ dif() }}</p>
+    <p>{{ mul() }}</p>
+    <p>{{ div() }}</p>
 </div>
 
+
+<script>
+    var app = angular.module('app', []);
+    app.controller('mainController', function($scope) {
+	    $scope.a = 10;
+ 	    $scope.b = 2;
+        $scope.sum = function() {
+            return $scope.a + " + " + $scope.b + " = " + ($scope.a + $scope.b);
+        };
+        $scope.dif = function() {
+            return $scope.a + " - " + $scope.b + " = " + ($scope.a - $scope.b);
+        };
+        $scope.mul = function() {
+            return $scope.a + " * " + $scope.b + " = " + ($scope.a * $scope.b);
+        };
+        $scope.div = function() {
+            return $scope.a + " / " + $scope.b + " = " + ($scope.a / $scope.b);
+        };
+    });
+</script>
 </body>
 </html>
